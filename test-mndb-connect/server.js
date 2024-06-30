@@ -1,19 +1,21 @@
 import express from 'express';
-import cors from 'cors';
+// import cors from 'cors';
 import connectToMongoDB from './dbConnect.js';
 
 const app = express();
 
-let client; // Define client variable outside try block
+let client;
+let database;
+let collection;
 
-app.get(cors())
+// app.get(cors())
 
 app.get('/', async (req, res) => {
 
     try {
-        client = await connectToMongoDB(); // Assign client after successful connection
-        const database = client.db("test-cli");
-        const collection = database.collection("rwst");
+        client = await connectToMongoDB();
+        database = client.db("test");
+        collection = database.collection("rwst");
         const result = await collection.find({}).toArray();
         res.json(result);
     } catch (error) {
@@ -27,9 +29,9 @@ app.get('/', async (req, res) => {
     }
 });
 
-app.get('/req', (req, res) => {
+app.get('/req', async (req, res) => {
     res.json({
-        data: []
+        data: 'REQ'
     })
 })
 
