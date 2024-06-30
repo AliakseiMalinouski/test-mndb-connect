@@ -1,5 +1,5 @@
 import express from 'express';
-// import cors from 'cors';
+import cors from 'cors';
 import connectToMongoDB from './dbConnect.js';
 
 const app = express();
@@ -8,7 +8,7 @@ let client;
 let database;
 let collection;
 
-// app.get(cors())
+app.use(cors())
 
 app.get('/', async (req, res) => {
 
@@ -17,7 +17,7 @@ app.get('/', async (req, res) => {
         database = client.db("test");
         collection = database.collection("rwst");
         const result = await collection.find({}).toArray();
-        res.json(result);
+        return res.json(result);
     } catch (error) {
         console.error("Error handling request:", error);
         res.status(500).json({ error: "Internal server error" });
