@@ -1,7 +1,7 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
 const uri =
-  "mongodb+srv://aleksymalinowski21:T7we1UpmuB6qjqWI@test-cl.ddppmqr.mongodb.net/?appName=test-cl";
+  "mongodb+srv://aleksymalinowski21:iOmbP0KC1eQC1ASX@cluster121.s1vinte.mongodb.net/?retryWrites=true&w=majority&appName=Cluster121";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 export const client = new MongoClient(uri, {
   serverApi: {
@@ -29,3 +29,7 @@ async function connectToMongoDB() {
 
 
 export default connectToMongoDB;
+
+
+// iOmbP0KC1eQC1ASX
+//const uri = "mongodb+srv://aleksymalinowski21:iOmbP0KC1eQC1ASX@cluster121.s1vinte.mongodb.net/?appName=Cluster121";
